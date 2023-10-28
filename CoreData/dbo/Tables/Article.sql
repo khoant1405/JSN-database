@@ -10,7 +10,7 @@
 	[ModifiedOn] [datetime] NULL,
 	[ModifiedBy] [int] NULL,
 	[UserId] [int] NOT NULL,
-	[UserName] [nvarchar](50)
+	[UserName] [nvarchar](50) NULL
 PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
