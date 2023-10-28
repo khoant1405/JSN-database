@@ -3,10 +3,10 @@ Title Publish Main Database from DACPAC
 
 REM *** Prepare parameters for executing ***
 set deployenv="DEV"
-set SQLServerSolutionRootUrl="C:\crawl-database"
+set SQLServerSolutionRootUrl="C:\JSN-database"
 set MSBuild="C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\MSBuild.exe"
 set SQLServerSolution="%SQLServerSolutionRootUrl%\DatabaseDeployment.sln"
-set CoreData_DACPAC="%SQLServerSolutionRootUrl%\CoreData\bin\Local\CoreData.dacpac"
+set CoreData_DACPAC="%SQLServerSolutionRootUrl%\CoreData\bin\\Debug\CoreData.dacpac"
 
 :: Reference to url for more information https://docs.microsoft.com/en-us/sql/tools/sqlpackage?view=sql-server-ver15#publish-parameters-properties-and-sqlcmd-variables
 set SqlPackage="C:\Program Files\Microsoft SQL Server\160\DAC\bin\SqlPackage.exe"
@@ -20,7 +20,7 @@ set WipeData=true
 :: Please remove:
 :: - -U %SQLServerUsername% -P %SQLServerPassword% in sqlcmd Enable contained database
 :: - /TargetUser:%SQLServerUsername% /TargetPassword:%SQLServerPassword% in all publish command
-set SQLServerInstance=localhost,1433
+set SQLServerInstance=localhost,1434
 set SQLServerUsername=sa
 set SQLServerPassword=1405
 REM *** End Prepare parameters for executing ***
@@ -34,7 +34,7 @@ ECHO End build SQL Server Projects
 @REM ECHO End Enable contained database
 
 ECHO Begin publish to CoreData DB
-%SqlPackage% /TargetDatabaseName:CoreData /TargetServerName:%SQLServerInstance% /TargetUser:%SQLServerUsername% /TargetPassword:%SQLServerPassword% /Action:Publish /p:CreateNewDatabase=%CreateNewDatabase% /p:BlockOnPossibleDataLoss=%BlockOnPossibleDataLoss% /SourceFile:%CoreData_DACPAC% /v:deployenv=%deployenv% /v:WipeData=$WipeData
+%SqlPackage% /TargetDatabaseName:CoreData /TargetServerName:%SQLServerInstance% /TargetUser:%SQLServerUsername% /TargetPassword:%SQLServerPassword% /Action:Publish /p:CreateNewDatabase=%CreateNewDatabase% /p:BlockOnPossibleDataLoss=%BlockOnPossibleDataLoss% /TargetTrustServerCertificate:True /SourceFile:%CoreData_DACPAC% /v:deployenv=%deployenv% /v:WipeData=$WipeData
 ECHO End publish to CoreData DB
 
 @pause
