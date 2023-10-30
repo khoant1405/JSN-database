@@ -2,7 +2,7 @@
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[UserName] [nvarchar](50) UNIQUE NOT NULL,
 	[IsActive] [bit] NOT NULL,
-	[Role] [nvarchar](50) NOT NULL,
+	[Role] [int] NULL,
 	[PasswordHash] [varbinary](max) NOT NULL,
 	[PasswordSalt] [varbinary](max) NOT NULL,
 	[RefreshToken] [nvarchar](max) NULL,
