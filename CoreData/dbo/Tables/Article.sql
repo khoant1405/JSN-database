@@ -10,12 +10,13 @@
 	[ModifiedOn] [datetime] NULL,
 	[ModifiedBy] [int] NULL,
 	[UserId] [int] NOT NULL,
-	[UserName] [nvarchar](50) NULL
+	[UserName] [nvarchar](50) NULL,
+	[CategoryId] [int] NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
 
 ALTER TABLE [dbo].[Article]  WITH CHECK ADD  CONSTRAINT [Fk_Article_UserId] FOREIGN KEY([UserId])
