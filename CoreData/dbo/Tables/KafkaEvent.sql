@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[EventKafka](
+﻿CREATE TABLE [dbo].[KafkaEvent](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[ArticleId] [int] NOT NULL,
 	[CategoryId] [int] NULL,
